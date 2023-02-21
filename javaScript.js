@@ -71,9 +71,3 @@ function clearGrid () {
 
 clearGrid ();
 
-
-//https://github.com/jennifertieuu/top-etch-a-sketch/blob/main/script.js
-
-//https://stackoverflow.com/questions/65890826/problem-with-resizing-of-a-grid-javascript-css-html-etch-a-sketch-for-the-odi
-
-//https://dev.to/jteacodes/the-odin-project-etch-a-sketch-1oj5 (ТУТ ВСЕ НАПИСАНО)
