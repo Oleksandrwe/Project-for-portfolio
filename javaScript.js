@@ -1,28 +1,39 @@
-const container = document.querySelector (".container");
 
+//createGrid 
+let number = 16;
+function createGrid (number) {
 
-for (let i = 1; i<257; i++) {
+const container = document.querySelector ('.container');
+container.style.gridTemplateColumns = `repeat(${number}, 25fr)`;
+container.style.gridTemplateRows = `repeat(${number}, 25fr)`;
+
+for (let i = 0; i<=number*number; i++) {
 let div = document.createElement ('div');
-div.style.cssText = "border: 1px solid black; height: 25px; width: 25px"; 
+
+div.classList.add('grid-box');
+ 
 container.appendChild(div);
 
+//changeColor 
+function changeColor () {
 
-div.addEventListener ('mouseover', one);
-div.addEventListener ('mousedown', one);
-
-
-function one () {
-
-  div.style.backgroundColor = "black";
+  div.style.backgroundColor = 'black';
 }
-
+div.addEventListener ('mouseover', changeColor);
+div.addEventListener ('mousedown', changeColor);
 }
 
 
-const button = document.querySelector ('.button');
+}
+createGrid (number);
 
-button.addEventListener ('click', function two () {
+//resetGrid 
+function resetGrid () {
 
+const container = document.querySelector ('.container');
+const resetButton = document.querySelector ('.reset-button');
+
+resetButton.addEventListener ('click', function two () {
   let num = prompt("Please enter the number of squares");
   if (num === undefined || num === null || num === "") {
     return;
@@ -35,43 +46,34 @@ while (num > 100){
 while (container.hasChildNodes()) {
   container.removeChild(container.firstChild);
 }
+createGrid (num);
+
+})
 
 
-
-  for (let i = 1; i<num; i++) {
-    let div = document.createElement ('div');
-    div.style.cssText = "border: 1px solid black; height: 25px; width: 25px";
-    div.id = "grid-element";  
-    container.appendChild(div);
-    
-    
-    div.addEventListener ('mouseover', one);
-    div.addEventListener ('mousedown', one);
-    function one () {
-
-      div.style.backgroundColor = "black";
-    }
-  }
-});
-
-
-
-//exampls
-
-function createGrid(number) {
-  const gridContainer = document.querySelector(".grid-container");
-  gridContainer.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
-  gridContainer.style.gridTemplateRows = `repeat(${number}, 1fr)`;
-  for (let i = 1; i <= number*number; i++) {
-      let div = document.createElement("div");
-      div.classList.add("grid-box")
-      gridContainer.appendChild(div);
-  }
-  document.querySelector(".grid-dimensions").textContent = `${number}x${number}`;
 }
 
+resetGrid ();
+
+//clearGrid 
+function clearGrid () {
+
+  const container = document.querySelector ('.container');
+  const clearButton = document.querySelector ('.clear-button');
+  
+  clearButton.addEventListener ('click', function two () {
+    
+    let gridBoxList = document.querySelectorAll(".grid-box");
+      gridBoxList.forEach(gridBox => {gridBox.style.backgroundColor = null});
+    }
+
+)}
+
+clearGrid ();
 
 
 //https://github.com/jennifertieuu/top-etch-a-sketch/blob/main/script.js
 
 //https://stackoverflow.com/questions/65890826/problem-with-resizing-of-a-grid-javascript-css-html-etch-a-sketch-for-the-odi
+
+//https://dev.to/jteacodes/the-odin-project-etch-a-sketch-1oj5 (ТУТ ВСЕ НАПИСАНО)
